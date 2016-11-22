@@ -38,13 +38,13 @@
     [scroll flashScrollIndicators];
     [self.view addSubview:scroll];
     self.scroll = scroll;
-    [self createImage];
+    [self xg_createImage];
     
     
 }
 
 #pragma mark - 添加图片
--(void)createImage{
+-(void)xg_createImage{
     for (int i = 0; i < self.imgs; i++) {
         UIButton *imgBtn = [[UIButton alloc] init];
         imgBtn.layer.cornerRadius = 15;
@@ -60,7 +60,7 @@
         CGFloat btnX = (screenW - btnW) * 0.5;
         CGFloat btnY = TopMargin + btnH * 0.5 * i;
         imgBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-        [imgBtn addTarget:self action:@selector(imageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [imgBtn addTarget:self action:@selector(xg_imageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.scroll addSubview:imgBtn];
         if (i == self.imgs - 1){
             self.maxY = CGRectGetMaxY(imgBtn.frame);
@@ -70,7 +70,7 @@
 }
 
 #pragma mark -  图片的点击事件
--(void)imageBtnClick:(UIButton *)sender{
+-(void)xg_imageBtnClick:(UIButton *)sender{
     CGFloat btnY = CGRectGetMaxY(sender.frame);
     if (btnY > screenH) {
         [UIView animateWithDuration:0.6 animations:^{
